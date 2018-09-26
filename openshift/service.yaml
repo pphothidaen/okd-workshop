@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: okd-workshop
+  labels:
+    app: okd-workshop
+spec:
+  ports:
+    - name: 3000-tcp
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
+  selector:
+    app: okd-workshop
+    deploymentconfig: okd-workshop
+  sessionAffinity: None
+

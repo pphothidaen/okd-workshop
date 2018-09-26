@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: BuildConfig
+metadata:
+  name: okd-workshop
+  labels:
+    build: okd-workshop
+spec:
+  runPolicy: Serial
+  source:
+    type: Git
+    git:
+      uri: 'https://github.com/pphothidaen/okd-workshop.git'
+    sourceSecret:
+      name: github-openship-localhost
+  strategy:
+    type: Docker
+    dockerStrategy:
+      env:
+        # - name: HTTP_PROXY
+        #   value: 'http://egress-proxy:8080'
+        # - name: HTTPS_PROXY
+        #   value: 'http://egress-proxy:8080'
+        # - name: http_proxy
+        #   value: 'http://egress-proxy:8080'
+        # - name: https_proxy
+        #   value: 'http://egress-proxy:8080'
+        - name: NODE_OPTIONS
+          value: '--max_old_space_size=2048'
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'okd-workshop:latest'
+

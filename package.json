@@ -1,0 +1,31 @@
+{
+  "name": "okd-workshop",
+  "description": "Hello OKD test app",
+  "version": "0.0.1",
+  "main": "index.js",
+  "private": true,
+  "dependencies": {
+    "express": "^4.16.3"
+  },
+  "scripts": {
+    "start": "node .",
+    "test": "mocha **/*.spec.js",
+    "lint": "eslint server.js",
+    "cover": "nyc --reporter=lcov --reporter=json mocha **/*.spec.js && mv coverage/coverage-final.json coverage/coverage.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pphothidaen/okd-workshop.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.11.0",
+    "mocha": "^5.1.0",
+    "nyc": "^11.6.0",
+    "supertest": "^3.0.0"
+  }
+}
